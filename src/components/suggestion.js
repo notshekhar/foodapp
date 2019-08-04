@@ -4,7 +4,6 @@ class Suggest extends React.Component {
   constructor() {
     super();
     this.state = {
-      loading: true,
       prefrence: localStorage.getItem("prefrence"),
       data: {},
       accept: localStorage.getItem("accept")
@@ -27,7 +26,6 @@ class Suggest extends React.Component {
     );
     let m = await d.json();
     this.setState({ data: m });
-    this.setState({loading: false})
     console.log(this.state.data)
   }
   checktime() {
@@ -90,7 +88,7 @@ class Suggest extends React.Component {
           </button>
           <button
             className="random"
-            disabled={this.state.accept && this.state.loading}
+            disabled={this.state.accept}
             onClick={() => this.random()}
           >
             Random
